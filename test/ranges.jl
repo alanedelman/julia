@@ -301,3 +301,11 @@ r = -0.004532318104333742:1.2597349521122731e-5:0.008065031416788989
 @test_approx_eq r[5:-2:1][2] r[3]
 @test_throws BoundsError r[0:10]
 @test_throws BoundsError r[1:10000]
+
+# issue #7387
+for r in (0:1, 0.0:1.0)
+    @test r+im == [r]+im
+    @test r-im == [r]-im
+    @test r*im == [r]*im
+    @test r/im == [r]/im
+end
